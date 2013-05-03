@@ -2,10 +2,10 @@
 
 CONFIG_DIR=${HOME}
 
-all: apt vim awesome screen zsh
+all: apt vim awesome screen zsh fonts
 	
 apt:
-	sudo apt-get install aptitude git vim-nox screen zsh awesome
+	sudo apt-get install aptitude git vim-nox screen zsh awesome fonts-inconsolata
 
 git: apt
 	cd ${HOME}
@@ -35,4 +35,10 @@ screen: apt
 	cd ${HOME}
 	git clone https://github.com/joninvski/screen
 	cd screen
+	make
+
+fonts: apt
+	cd ${HOME}
+	git clone https://github.com/joninvski/fonts
+	cd fonts
 	make
