@@ -5,7 +5,7 @@ CONFIG_DIR=${HOME}
 all: apt vim awesome screen zsh fonts
 	
 apt:
-	sudo apt-get install aptitude git vim-nox screen zsh awesome fonts-inconsolata
+	sudo apt-get install aptitude git vim-nox screen zsh awesome fonts-inconsolata roxterm xclip
 
 git: apt
 	cd ${HOME}
