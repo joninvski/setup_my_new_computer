@@ -1,9 +1,10 @@
 .DEFAULT_GOAL := server
+.PHONY: vim awesome zsh screen fonts config git
 
 CONFIG_DIR=${HOME}
 
-DEB_PACKAGES_BASIC="aptitude git vim-nox screen zsh"
-DEB_PACKAGES_X="awesome fonts-inconsolata roxterm xclip"
+DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
+DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 
 server: install_server vim awesome screen zsh
 desktop: install_desktop
@@ -18,37 +19,19 @@ config:
 	chsh /usr/bin/zsh
 
 git: apt
-	cd ${CONFIG_DIR}
-	git clone https://github.com/joninvski/gitconfig
-	cd gitconfig
-	make
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/gitconfig;cd gitconfig;make
 
 vim: apt
-	cd ${CONFIG_DIR}
-	git clone https://github.com/joninvski/vim
-	cd vim
-	make
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/vim;cd vim;make
 
 awesome: apt
-	cd ${CONFIG_DIR}
-	git clone https://github.com/joninvski/awesome
-	cd awesome
-	make
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/awesome;cd awesome;make
 
 zsh: apt
-	cd ${CONFIG_DIR}
-	git clone https://github.com/joninvski/oh-my-zsh
-	cd oh-my-zsh
-	make
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/oh-my-zsh;cd oh-my-zsh;make
 
 screen: apt
-	cd ${CONFIG_DIR}
-	git clone https://github.com/joninvski/screen
-	cd screen
-	make
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/screen;cd screen;make
 
 fonts: apt
-	cd ${CONFIG_DIR}
-	git clone https://github.com/joninvski/fonts
-	cd fonts
-	make
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/fonts;cd fonts;make
