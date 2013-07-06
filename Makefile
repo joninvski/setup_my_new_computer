@@ -18,20 +18,20 @@ install_desktop: install_server
 config:
 	chsh /usr/bin/zsh
 
-git: apt
+git: 
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/gitconfig;cd gitconfig;make
 
-vim: apt
+vim: 
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/vim;cd vim;make
 
-awesome: apt
+awesome: 
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/awesome;cd awesome;make
 
-zsh: apt
+zsh: 
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/oh-my-zsh;cd oh-my-zsh;make
 
-screen: apt
+screen: 
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/screen;cd screen;make
 
-fonts: apt
+fonts: 
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/fonts;cd fonts;make
