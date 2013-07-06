@@ -6,32 +6,36 @@ CONFIG_DIR=${HOME}
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 
-server: install_server vim awesome screen zsh
-desktop: install_desktop
-	
+server: install_server vim screen zsh tmux
+desktop: install_desktop awesome
+
 install_server:
-	sudo apt-get install ${DEB_PACKAGES_BASIC} 
+	sudo apt-get install ${DEB_PACKAGES_BASIC}
 
 install_desktop: install_server
-	sudo apt-get install ${DEB_PACKAGES_X} 
+	sudo apt-get install ${DEB_PACKAGES_X}
 
 config:
-	chsh /usr/bin/zsh
+	chsh -s /bin/zsh
 
-git: 
+git:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/gitconfig;cd gitconfig;make
 
-vim: 
+vim:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/vim;cd vim;make
 
-awesome: 
+awesome:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/awesome;cd awesome;make
 
-zsh: 
+zsh:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/oh-my-zsh;cd oh-my-zsh;make
 
-screen: 
+screen:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/screen;cd screen;make
 
-fonts: 
+fonts:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/fonts;cd fonts;make
+
+tmux:
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/tmux;cd tmux;make
+
