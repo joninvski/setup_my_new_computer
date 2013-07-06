@@ -39,3 +39,5 @@ fonts:
 tmux:
 	cd ${CONFIG_DIR};git clone https://github.com/joninvski/tmux;cd tmux;make
 
+gitconfig:
+	cd ${CONFIG_DIR};git clone https://github.com/joninvski/gitconfig;cd gitconfig;make
