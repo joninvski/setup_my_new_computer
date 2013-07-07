@@ -1,17 +1,13 @@
 .DEFAULT_GOAL := server
 .PHONY: vim awesome zsh screen fonts config git
 
-CONFIG_DIR=${HOME}
+CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 
 server: install_server git_sync vim screen zsh tmux
 desktop: install_desktop awesome
-
-git_sync:
-	 git submodule init 
-	 git submodule update 
 
 install_server:
 	sudo apt-get install ${DEB_PACKAGES_BASIC}
@@ -23,25 +19,33 @@ config:
 	chsh -s /bin/zsh
 
 git:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/gitconfig;cd gitconfig;make
+	git clone https://github.com/joninvski/gitconfig
+	make -C gitconfig/make
 
 vim:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/vim;cd vim;make
+	git clone https://github.com/joninvski/vim
+	make -C vim/make
 
 awesome:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/awesome;cd awesome;make
+	git clone https://github.com/joninvski/awesome
+	make -C awesome/make
 
 zsh:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/oh-my-zsh;cd oh-my-zsh;make
+	git clone https://github.com/joninvski/oh-my-zsh
+	make -C oh-my-zsh/make
 
 screen:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/screen;cd screen;make
+	git clone https://github.com/joninvski/screen
+	make -C screen/make
 
 fonts:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/fonts;cd fonts;make
+	git clone https://github.com/joninvski/fonts
+	make -C fonts/make
 
 tmux:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/tmux;cd tmux;make
+	git clone https://github.com/joninvski/tmux
+	make -C tmux/make
 
 gitconfig:
-	cd ${CONFIG_DIR};git clone https://github.com/joninvski/gitconfig;cd gitconfig;make
+	git clone https://github.com/joninvski/gitconfig
+	make -C gitconfig/make
