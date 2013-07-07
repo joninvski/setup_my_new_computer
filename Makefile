@@ -24,7 +24,7 @@ git:
 
 vim:
 	git clone https://github.com/joninvski/vim
-	make -C vim/make
+	make -C vim/Makefile
 
 awesome:
 	git clone https://github.com/joninvski/awesome
