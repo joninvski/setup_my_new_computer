@@ -20,7 +20,7 @@ config:
 
 git:
 	git clone https://github.com/joninvski/gitconfig
-	make -C gitconfig/make
+	make -C gitconfig/Makefile
 
 vim:
 	git clone https://github.com/joninvski/vim
@@ -28,24 +28,24 @@ vim:
 
 awesome:
 	git clone https://github.com/joninvski/awesome
-	make -C awesome/make
+	make -C awesome/Makefile
 
 zsh:
 	git clone https://github.com/joninvski/oh-my-zsh
-	make -C oh-my-zsh/make
+	make -C oh-my-zsh/Makefile
 
 screen:
 	git clone https://github.com/joninvski/screen
-	make -C screen/make
+	make -C screen/Makefile
 
 fonts:
 	git clone https://github.com/joninvski/fonts
-	make -C fonts/make
+	make -C fonts/Makefile
 
 tmux:
 	git clone https://github.com/joninvski/tmux
-	make -C tmux/make
+	make -C tmux/Makefile
 
 gitconfig:
 	git clone https://github.com/joninvski/gitconfig
-	make -C gitconfig/make
+	make -C gitconfig/Makefile
