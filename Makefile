@@ -6,8 +6,12 @@ CONFIG_DIR=${HOME}
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 
-server: install_server vim screen zsh tmux
+server: install_server git_sync vim screen zsh tmux
 desktop: install_desktop awesome
+
+git_sync:
+	 git submodule init 
+	 git submodule update 
 
 install_server:
 	sudo apt-get install ${DEB_PACKAGES_BASIC}
