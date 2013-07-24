@@ -31,8 +31,8 @@ awesome:
 	make -C awesome
 
 zsh:
-	git clone https://github.com/joninvski/oh-my-zsh
-	make -C oh-my-zsh
+	git clone https://github.com/joninvski/zsh
+	make -C zsh
 
 screen:
 	git clone https://github.com/joninvski/screen
