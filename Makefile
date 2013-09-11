@@ -1,16 +1,26 @@
-.DEFAULT_GOAL := server
+.DEFAULT_GOAL := dev
 .PHONY: vim awesome zsh screen fonts config git
 
 CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
+DEB_PACKAGES_DEV=ruby
 
 server: install_server vim screen zsh tmux
 desktop: install_desktop awesome
+dev: install_dev tmuxinator
 
-install_server:
+LOCAL_BIN="${HOME}/bin"
+
+base:
+	mkdir -p ${LOCAL_BIN}
+
+install_server: base
 	sudo apt-get install ${DEB_PACKAGES_BASIC}
+
+install_dev: server
+	sudo apt-get install ${DEB_PACKAGES_DEV}
 
 install_desktop: install_server
 	sudo apt-get install ${DEB_PACKAGES_X}
@@ -49,3 +59,8 @@ tmux:
 gitconfig:
 	git clone https://github.com/joninvski/gitconfig
 	make -C gitconfig
+
+tmuxinator:
+	gem install tmuxinator --user-install --bindir ${LOCAL_BIN}
+	git clone https://github.com/joninvski/tmuxinator
+	make -C tmuxinator
