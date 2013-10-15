@@ -1,11 +1,11 @@
 .DEFAULT_GOAL := dev
-.PHONY: vim awesome zsh screen fonts config git
+.PHONY: vim awesome zsh screen fonts config git tmux tmuxinator
 
 CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
-DEB_PACKAGES_DEV=ruby mosh
+DEB_PACKAGES_DEV=ruby mosh ack-grep
 
 server: install_server vim screen zsh tmux
 desktop: install_desktop awesome
