@@ -5,7 +5,7 @@ CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
-DEB_PACKAGES_DEV=ruby mosh ack-grep
+DEB_PACKAGES_DEV=ruby mosh ack-grep tmux
 
 server: install_server vim screen zsh tmux
 desktop: install_desktop awesome
@@ -49,6 +49,7 @@ screen:
 	make -C screen
 
 fonts:
+	sudo aptitude install xfonts-terminus 			# Usefull for awesome top bar
 	git clone https://github.com/joninvski/fonts
 	make -C fonts
 
