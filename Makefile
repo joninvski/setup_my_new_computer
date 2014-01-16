@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := dev
-.PHONY: vim awesome zsh screen fonts config git tmux tmuxinator
+.PHONY: vim awesome zsh screen fonts git tmux tmuxinator
 
 CONFIG_DIR := ${HOME}
 
@@ -25,9 +25,6 @@ install_dev: server
 install_desktop: install_server
 	sudo apt-get install ${DEB_PACKAGES_X}
 
-config:
-	chsh -s /bin/zsh
-
 git:
 	git clone https://github.com/joninvski/gitconfig
 	make -C gitconfig
@@ -43,6 +40,8 @@ awesome:
 zsh:
 	git clone https://github.com/joninvski/zsh
 	make -C zsh
+	echo "Enter the correct password if want zsh as default shell"
+	- chsh -s /bin/zsh && 0
 
 screen:
 	git clone https://github.com/joninvski/screen
