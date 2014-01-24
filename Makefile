@@ -3,7 +3,7 @@
 
 CONFIG_DIR := ${HOME}
 
-DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial
+DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk
 
