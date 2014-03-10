@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := dev
-.PHONY: vim awesome zsh screen fonts git tmux tmuxinator
+.PHONY: vim awesome zsh screen fonts git tmux tmuxinator android
 
 CONFIG_DIR := ${HOME}
 
@@ -64,3 +64,22 @@ tmuxinator:
 	gem install tmuxinator --user-install --bindir ${LOCAL_BIN}
 	git clone https://github.com/joninvski/tmuxinator
 	make -C tmuxinator
+
+android:
+	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
+	chmod a+x ${LOCAL_BIN}/repo
+	if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch > /dev/null; fi
+	mkdir android
+	wget "http://dl.google.com/android/android-sdk_r22.3-linux.tgz" -O android/android-sdk.tgz
+	cd android && tar xvzf android-sdk.tgz
+	echo -n 'ANDROID_HOME_AUX=$${ANDROID_HOME:=' > ~/zsh/paths-to-add/android
+	echo "`pwd`/android/android-sdk-linux}" >> ~/zsh/paths-to-add/android
+	echo 'PATH=$${PATH}:$${ANDROID_HOME_AUX}/platform-tools' >> ~/zsh/paths-to-add/android
+	echo 'PATH=$${PATH}:$${ANDROID_HOME_AUX}/tools' >> ~/zsh/paths-to-add/android
+	echo 'unset ANDROID_HOME_AUX' >> ~/zsh/paths-to-add/android
+	wget https://dl-ssl.google.com/android/repository/build-tools_r19-linux.zip -O build-tools_r19-linux.zip
+	unzip build-tools_r19-linux.zip -d android/android-sdk
+	mkdir -p android/android-sdk/build-tools/
+	mv  android/android-sdk/android-4.4 android/android-sdk/build-tools/19
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter platform-tools,android-19,sysimg-10,extra-android-support,extra-android-m2repository --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc
