@@ -68,7 +68,6 @@ tmuxinator:
 android:
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
 	chmod a+x ${LOCAL_BIN}/repo
-	if [ `uname -m` = x86_64 ]; then sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch > /dev/null; fi
 	mkdir android
 	wget "http://dl.google.com/android/android-sdk_r22.3-linux.tgz" -O android/android-sdk.tgz
 	cd android && tar xvzf android-sdk.tgz
@@ -82,4 +81,4 @@ android:
 	mkdir -p android/android-sdk/build-tools/
 	mv  android/android-sdk/android-4.4 android/android-sdk/build-tools/19
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter platform-tools,android-19,sysimg-10,extra-android-support,extra-android-m2repository --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc --no-ui --force
