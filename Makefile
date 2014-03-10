@@ -69,7 +69,7 @@ android:
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
 	chmod a+x ${LOCAL_BIN}/repo
 	mkdir android
-	wget "http://dl.google.com/android/android-sdk_r22.3-linux.tgz" -O android/android-sdk.tgz
+	wget "http://dl.google.com/android/android-sdk_r22.6-linux.tgz" -O android/android-sdk.tgz
 	cd android && tar xvzf android-sdk.tgz
 	echo -n 'ANDROID_HOME=$${ANDROID_HOME:=' > ~/zsh/paths-to-add/android
 	echo "`pwd`/android/android-sdk-linux}" >> ~/zsh/paths-to-add/android
@@ -80,5 +80,6 @@ android:
 	unzip build-tools_r19-linux.zip -d android/android-sdk
 	mkdir -p android/android-sdk/build-tools/
 	mv  android/android-sdk/android-4.4 android/android-sdk/build-tools/19
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter platform-tools,android-19,sysimg-10,extra-android-support,extra-android-m2repository --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter 1,2 --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter tools,android-19,sysimg-19,extra-android-support,extra-android-m2repository --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc --no-ui --force
