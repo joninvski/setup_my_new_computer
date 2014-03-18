@@ -83,3 +83,4 @@ android:
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter 1,2 --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter tools,android-19,sysimg-19,extra-android-support,extra-android-m2repository --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc --no-ui --force
+	ln -s `pwd`/android ${HOME}/android
