@@ -65,22 +65,28 @@ tmuxinator:
 	git clone https://github.com/joninvski/tmuxinator
 	make -C tmuxinator
 
+
+ANDROID_SDK=android-sdk_r22.6.1-linux.tgz
+BUILD_TOOLS=build-tools_r19.0.1-linux.zip
+LATEST_VERSION=19
 android:
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
 	chmod a+x ${LOCAL_BIN}/repo
 	mkdir android
-	wget "http://dl.google.com/android/android-sdk_r22.6-linux.tgz" -O android/android-sdk.tgz
+	wget "http://dl.google.com/android/${ANDROID_SDK}" -O android/android-sdk.tgz
 	cd android && tar xvzf android-sdk.tgz
 	echo -n 'ANDROID_HOME=$${ANDROID_HOME:=' > ~/zsh/paths-to-add/android
 	echo "`pwd`/android/android-sdk-linux}" >> ~/zsh/paths-to-add/android
 	echo 'PATH=$${PATH}:$${ANDROID_HOME}/platform-tools' >> ~/zsh/paths-to-add/android
 	echo 'PATH=$${PATH}:$${ANDROID_HOME}/tools' >> ~/zsh/paths-to-add/android
 	echo 'export ANDROID_HOME' >> ~/zsh/paths-to-add/android
-	wget https://dl-ssl.google.com/android/repository/build-tools_r19-linux.zip -O build-tools_r19-linux.zip
-	unzip build-tools_r19-linux.zip -d android/android-sdk
-	mkdir -p android/android-sdk/build-tools/
-	mv  android/android-sdk/android-4.4 android/android-sdk/build-tools/19
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter 1,2 --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter tools,android-19,sysimg-19,extra-android-support,extra-android-m2repository --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc --no-ui --force
+	wget https://dl-ssl.google.com/android/repository/${BUILD_TOOLS} -O build-tools-linux.zip
+	unzip build-tools-linux.zip -d android/android-sdk
+	rm build-tools-linux.zip
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter 1,2                        --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter android-${LATEST_VERSION}  --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter sysimg-${LATEST_VERSION}   --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter extra-android-support      --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter extra-android-m2repository --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc                        --no-ui --force
 	ln -s `pwd`/android ${HOME}/android
