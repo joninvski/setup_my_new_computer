@@ -67,7 +67,7 @@ tmuxinator:
 
 
 ANDROID_SDK=android-sdk_r22.6.1-linux.tgz
-BUILD_TOOLS=build-tools_r19.0.1-linux.zip
+BUILD_TOOLS=build-tools_r19.0.3-linux.zip
 LATEST_VERSION=19
 android:
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
