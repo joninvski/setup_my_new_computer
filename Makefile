@@ -90,3 +90,7 @@ android:
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter extra-android-m2repository --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc                        --no-ui --force
 	ln -s `pwd`/android ${HOME}/android
+
+gradle:
+	git clone https://github.com/joninvski/gradle_properties
+	make -C gradle_properties
