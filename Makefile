@@ -67,7 +67,7 @@ tmuxinator:
 
 
 ANDROID_SDK=android-sdk_r22.6.1-linux.tgz
-BUILD_TOOLS=build-tools_r19.0.3-linux.zip
+BUILD_TOOLS=build-tools-19.0.3
 LATEST_VERSION=19
 android:
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
@@ -80,10 +80,8 @@ android:
 	echo 'PATH=$${PATH}:$${ANDROID_HOME}/platform-tools' >> ~/zsh/paths-to-add/android
 	echo 'PATH=$${PATH}:$${ANDROID_HOME}/tools' >> ~/zsh/paths-to-add/android
 	echo 'export ANDROID_HOME' >> ~/zsh/paths-to-add/android
-	wget https://dl-ssl.google.com/android/repository/${BUILD_TOOLS} -O build-tools-linux.zip
-	unzip build-tools-linux.zip -d android/android-sdk
-	rm build-tools-linux.zip
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter 1,2                        --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter tools,platform-tools       --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter ${BUILD_TOOLS}             --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter android-${LATEST_VERSION}  --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter sysimg-${LATEST_VERSION}   --no-ui --force
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter extra-android-support      --no-ui --force
