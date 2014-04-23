@@ -5,7 +5,7 @@ CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
-DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk
+DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools
 
 server: install_server vim screen zsh tmux
 desktop: install_desktop awesome
