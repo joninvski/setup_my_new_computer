@@ -15,11 +15,12 @@ LOCAL_BIN="${HOME}/bin"
 
 base:
 	mkdir -p ${LOCAL_BIN}
-
-install_server: base
 	sudo apt-get install ${DEB_PACKAGES_BASIC}
 
-install_dev: server
+install_server: base
+	echo "TODO - Install server stuff"
+
+install_dev: base
 	sudo apt-get install ${DEB_PACKAGES_DEV}
 
 install_desktop: install_server
@@ -56,10 +57,6 @@ tmux:
 	git clone https://github.com/joninvski/tmux
 	make -C tmux
 
-gitconfig:
-	git clone https://github.com/joninvski/gitconfig
-	make -C gitconfig
-
 tmuxinator:
 	gem install tmuxinator --user-install --bindir ${LOCAL_BIN}
 	git clone https://github.com/joninvski/tmuxinator
@@ -86,13 +83,13 @@ android: pidcat
 	echo 'PATH=$${PATH}:$${ANDROID_HOME}/platform-tools' >> ~/zsh/paths-to-add/android
 	echo 'PATH=$${PATH}:$${ANDROID_HOME}/tools' >> ~/zsh/paths-to-add/android
 	echo 'export ANDROID_HOME' >> ~/zsh/paths-to-add/android
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter tools,platform-tools       --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter ${BUILD_TOOLS}             --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter android-${LATEST_VERSION}  --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter sysimg-${LATEST_VERSION}   --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter extra-android-support      --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter extra-android-m2repository --no-ui --force
-	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --filter doc                        --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter tools,platform-tools       --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter ${BUILD_TOOLS}             --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter android-${LATEST_VERSION}  --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter sysimg-${LATEST_VERSION}   --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter extra-android-support      --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter extra-android-m2repository --no-ui --force
+	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter doc                        --no-ui --force
 	ln -s `pwd`/android ${HOME}/android
 
 gradle:
