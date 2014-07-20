@@ -1,9 +1,9 @@
 .DEFAULT_GOAL := dev
-.PHONY: vim awesome zsh screen fonts git tmux tmuxinator android
+.PHONY: vim awesome zsh screen fonts git tmux tmuxinator android gradle_scripts
 
 CONFIG_DIR := ${HOME}
 
-DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags
+DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools
 
@@ -86,6 +86,6 @@ android:
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter doc                        --no-ui --force
 	ln -s `pwd`/android ${HOME}/android
 
-gradle:
-	git clone https://github.com/joninvski/gradle_properties
-	make -C gradle_properties
+gradle_scripts:
+	git clone https://github.com/joninvski/gradle_script
+	make -C gradle_scripts/
