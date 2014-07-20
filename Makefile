@@ -62,13 +62,19 @@ tmuxinator:
 	git clone https://github.com/joninvski/tmuxinator
 	make -C tmuxinator
 
+pidcat:
+	git clone https://github.com/JakeWharton/pidcat
+	chmod a+x pidcat/pidcat.py
+	cd pidcat && ln -s pidcat.py ${LOCAL_BIN}/pidcat
 
 ANDROID_SDK=android-sdk_r22.6.1-linux.tgz
 BUILD_TOOLS=build-tools-19.0.3
 LATEST_VERSION=19
-android:
+android: pidcat
+	# Install repo for android aosp compilation
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
 	chmod a+x ${LOCAL_BIN}/repo
+	# Now get the android sdk
 	mkdir android
 	wget "http://dl.google.com/android/${ANDROID_SDK}" -O android/android-sdk.tgz
 	cd android && tar xvzf android-sdk.tgz
