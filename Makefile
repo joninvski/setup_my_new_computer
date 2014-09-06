@@ -6,6 +6,7 @@ CONFIG_DIR := ${HOME}
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar
 DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
 DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools
+DEB_PACKAGES_ANDROID=libncurses5:i386 libstdc++6:i386 zlib1g:i386
 
 server: install_server vim screen zsh tmux
 desktop: install_desktop awesome
@@ -62,20 +63,24 @@ tmuxinator:
 	git clone https://github.com/joninvski/tmuxinator
 	make -C tmuxinator
 
-pidcat:
-	git clone https://github.com/JakeWharton/pidcat
+pidcat: base
+	- git clone https://github.com/JakeWharton/pidcat
 	chmod a+x pidcat/pidcat.py
-	cd pidcat && ln -s pidcat.py ${LOCAL_BIN}/pidcat
+	cd pidcat && ln -fs `pwd`/pidcat.py ${LOCAL_BIN}/pidcat
 
-ANDROID_SDK=android-sdk_r22.6.1-linux.tgz
+ANDROID_SDK=android-sdk_r23.0.2-linux.tgz
 BUILD_TOOLS=build-tools-19.0.3
 LATEST_VERSION=19
-android: pidcat
+
+android: pidcat base zsh oracle_java
+	sudo dpkg --add-architecture i386
+	sudo apt-get update
+	sudo apt install ${DEB_PACKAGES_ANDROID}
 	# Install repo for android aosp compilation
 	wget "http://commondatastorage.googleapis.com/git-repo-downloads/repo" -O ${LOCAL_BIN}/repo
 	chmod a+x ${LOCAL_BIN}/repo
 	# Now get the android sdk
-	mkdir android
+	- mkdir android
 	wget "http://dl.google.com/android/${ANDROID_SDK}" -O android/android-sdk.tgz
 	cd android && tar xvzf android-sdk.tgz
 	echo -n 'ANDROID_HOME=$${ANDROID_HOME:=' > ~/zsh/paths-to-add/android
@@ -92,6 +97,12 @@ android: pidcat
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter doc                        --no-ui --force
 	ln -s `pwd`/android ${HOME}/android
 
+oracle_java:
+	sudo bash -c 'echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list'
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+	sudo apt-get update
+	sudo apt-get install oracle-java8-installer
+
 gradle_scripts:
-	git clone https://github.com/joninvski/gradle_script
+	git clone https://github.com/joninvski/gradle_scripts
 	make -C gradle_scripts/
