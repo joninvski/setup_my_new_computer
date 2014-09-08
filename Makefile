@@ -4,8 +4,8 @@
 CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar
-DEB_PACKAGES_X=awesome fonts-inconsolata roxterm xclip
-DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools
+DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip
+DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools astyle
 DEB_PACKAGES_ANDROID=libncurses5:i386 libstdc++6:i386 zlib1g:i386
 
 server: install_server vim screen zsh tmux
@@ -106,3 +106,7 @@ oracle_java:
 gradle_scripts:
 	git clone https://github.com/joninvski/gradle_scripts
 	make -C gradle_scripts/
+
+roxterm:
+	git clone https://github.com/joninvski/roxterm.git
+	make -C roxterm/
