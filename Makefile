@@ -97,6 +97,12 @@ android: pidcat base zsh oracle_java
 	echo y | `pwd`/android/android-sdk-linux/tools/android update sdk --all --filter doc                        --no-ui --force
 	ln -s `pwd`/android ${HOME}/android
 
+android_source:
+	mkdir android_source
+	cd android_source; repo init -u https://android.googlesource.com/platform/manifest
+	echo "Get ready, this is going to take sometime"
+	cd android_source; repo sync
+
 oracle_java:
 	sudo bash -c 'echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list'
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
