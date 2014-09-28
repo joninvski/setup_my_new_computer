@@ -116,3 +116,7 @@ gradle_scripts:
 roxterm:
 	git clone https://github.com/joninvski/roxterm.git
 	make -C roxterm/
+
+wallpaper:
+	git clone https://github.com/joninvski/cheatsheet.git
+	make -C cheatsheet
