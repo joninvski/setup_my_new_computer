@@ -4,7 +4,7 @@
 CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar
-DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip suckless-tools
+DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip suckless-tools inkscape i3
 DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools astyle
 DEB_PACKAGES_ANDROID=libncurses5:i386 libstdc++6:i386 zlib1g:i386
 
@@ -38,6 +38,10 @@ vim:
 awesome:
 	git clone https://github.com/joninvski/awesome
 	make -C awesome
+
+i3:
+	git clone https://github.com/joninvski/i3
+	make -C i3
 
 zsh:
 	git clone https://github.com/joninvski/zsh
