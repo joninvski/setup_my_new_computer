@@ -5,7 +5,7 @@ CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar
 DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip suckless-tools inkscape i3 pavucontrol
-DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools astyle
+DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools astyle httpie
 DEB_PACKAGES_ANDROID=libncurses5:i386 libstdc++6:i386 zlib1g:i386
 
 server: install_server vim screen zsh tmux
