@@ -4,7 +4,7 @@
 CONFIG_DIR := ${HOME}
 
 DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar
-DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip suckless-tools inkscape i3
+DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip suckless-tools inkscape i3 pavucontrol
 DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools astyle
 DEB_PACKAGES_ANDROID=libncurses5:i386 libstdc++6:i386 zlib1g:i386
 
@@ -46,15 +46,29 @@ i3:
 zsh:
 	git clone https://github.com/joninvski/zsh
 	make -C zsh
+	mkdir -p -p ${HOME}/.config/base16-shell
+	git clone https://github.com/chriskempson/base16-shell.git ${HOME}/.config/base16-shell
 	echo "Enter the correct password if want zsh as default shell"
 	- chsh -s /bin/zsh && 0
+
+nvim:
+	sudo add-apt-repository ppa:neovim-ppa/unstable
+	sudo apt-get update
+	sudo apt-get install neovim
+	sudo apt-get install python-dev python-pip python3-dev python3-pip
+	sudo pip3 install --upgrade neovim
+	sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+	sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+	git clone https://github.com/joninvski/nvim
+	make -C nvim
+	echo "Dont forget to run :PlugInstall"
 
 screen:
 	git clone https://github.com/joninvski/screen
 	make -C screen
 
 fonts:
-	sudo aptitude install xfonts-terminus 			# Usefull for awesome top bar
+	sudo aptitude install xfonts-terminus             # Usefull for awesome top bar
 	git clone https://github.com/joninvski/fonts
 	make -C fonts
 
