@@ -3,7 +3,7 @@
 
 CONFIG_DIR := ${HOME}
 
-DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar cmake autojump
+DEB_PACKAGES_BASIC=aptitude git vim-nox screen zsh mercurial exuberant-ctags htop rar cmake autojump git-extras
 DEB_PACKAGES_X=awesome awesome-extra fonts-inconsolata roxterm xclip suckless-tools inkscape i3 pavucontrol
 DEB_PACKAGES_DEV=ruby mosh ack-grep tmux vim-gtk inotify-tools astyle httpie tidy
 DEB_PACKAGES_ANDROID=libncurses5:i386 libstdc++6:i386 zlib1g:i386
